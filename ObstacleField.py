@@ -19,7 +19,7 @@ class ObstacleField:
     # showTicks = false
 
 
-    def __init__(self, dimensionList = [128, 128], coverageRate = 0.2):
+    def __init__(self, dimensionList=[128, 128], coverageRate=0.2):
         self.dim = dimensionList
         self.cov = coverageRate
         self.field = np.zeros((self.dim[0], self.dim[1]))
@@ -32,7 +32,7 @@ class ObstacleField:
 
         # print(self.field)
         plt.figure()
-        plt.imshow(self.field)
+        plt.imshow(self.field, cmap='Greys', interpolation='nearest')
         plt.show()
 
     def getDim(self):
@@ -71,14 +71,14 @@ class ObstacleField:
         colEnd = loc[1] + obs.shape[1]
 
         # If obstacle overlaps with edge of field
-        if rowEnd > self.dim[0] + 1:
+        if rowEnd >= self.dim[0] + 1:
             rowEnd = self.dim[0] + 1
-            cutLoc = loc[0] - self.dim[0] - 1
+            cutLoc = self.dim[0] - loc[0]
             obs = obs[0:cutLoc, :]
 
-        if colEnd > self.dim[1] + 1:
+        if colEnd >= self.dim[1] + 1:
             colEnd = self.dim[1] + 1
-            cutLoc = loc[1] - self.dim[1] - 1
+            cutLoc = self.dim[1] - loc[1]
             obs = obs[:, 0:cutLoc]
 
         # If set cells at location equal to obstacle
