@@ -2,6 +2,8 @@
 import numpy as np
 from Node import Node
 import copy
+import matplotlib.pyplot as plt
+from matplotlib import colors
 
 class Graph:
     # This is a graph object which is defined by an adjacency list
@@ -10,7 +12,7 @@ class Graph:
     #   mapSize     -   Shape of the map object
     #   adj         -   Array of node objects. Node.id variables represent the index of 
     #                   the node in adj.
-    #   neighbors   -   A dictinary containing the difference in indices for a cell and 
+    #   neighbors   -   A dictionary containing the difference in indices for a cell and 
     #                   its neighboring cells
     #
     # map indices <--> adj indices Math:
@@ -32,12 +34,23 @@ class Graph:
 
     def addNode(self, newNode):
         # Add a node to the graph
-
         pass
 
     def setMap(self):
         # set the map of the graph if not already set in constructor
         pass
+
+    def plotGraph(self, ax):
+
+        for node in self.adj:
+            curNode = self.__adjInd2MapInd(node.id)
+
+            for edge in node.edges:
+                curEdge = self.__adjInd2MapInd(edge)
+
+                ax.plot([curNode[0], curEdge[0]], [curNode[1], curEdge[1]], '.-', markersize=1.5, color="black", linewidth=1)
+        
+        return ax
 
     def __mapInd2AdjInd(self, mapInd):
         r = mapInd[0]
@@ -47,7 +60,9 @@ class Graph:
         return adjInd
 
     def __adjInd2MapInd(self, adjInd):
-        mapInd = adjInd
+        r = int(adjInd / self.mapSize[1])
+        c = adjInd % self.mapSize[1]
+        mapInd = np.array([r,c])
         return mapInd
 
     # Get all edges for the index

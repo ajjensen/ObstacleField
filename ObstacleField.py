@@ -27,13 +27,12 @@ class ObstacleField:
 
         self.__generateGrid()
 
-    def showField(self):
+    def showField(self, ax):
         # display the grid with obstacles
 
         # print(self.field)
-        plt.figure()
-        plt.imshow(self.field, cmap='Greys', interpolation='nearest')
-        plt.show()
+        ax.imshow(self.field.T, cmap='Greys', interpolation='nearest', extent=None)
+        return ax
 
     def getDim(self):
         # return self.field
