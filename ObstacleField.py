@@ -22,7 +22,7 @@ class ObstacleField:
     def __init__(self, dimensionList=[128, 128], coverageRate=0.2):
         self.dim = dimensionList
         self.cov = coverageRate
-        self.field = np.zeros((self.dim[0], self.dim[1]))
+        self.field = np.zeros((self.dim[0], self.dim[1]), np.int8)
         self.fieldSize = dimensionList[0] * dimensionList[1]
 
         self.__generateGrid()
