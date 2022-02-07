@@ -19,11 +19,11 @@ class Graph:
     neighbors = {'bottomright' : [1, 1], \
         'right' : [0, 1], \
         'bottom' : [1, 0], \
-        'topleft' : [-1, -1], \
-        'top' : [-1, 0], \
         'topright' : [-1, 1], \
         'bottomleft' : [1, -1], \
-        'left': [0, -1]}
+        'top' : [-1, 0], \
+        'left': [0, -1], \
+        'topleft' : [-1, -1]}
 
     def __init__(self, mapIn = np.zeros((128, 128), np.int8)):
         self.map = mapIn

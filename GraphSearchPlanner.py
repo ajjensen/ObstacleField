@@ -80,7 +80,7 @@ class GraphSearchPlanner:
                     self.graph[edge].setState_Alive()
                     Q.put(edge)
                     # print('insert: ', edge)
-        
+            self.BreadthFirstSol.numIterations += 1
         return False
 
     def planDepthFirst(self, update=False, ax=None):
@@ -116,7 +116,7 @@ class GraphSearchPlanner:
                     self.graph[edge].setState_Alive()
                     Q.put(edge)
                     # print('insert: ', edge)
-        
+            self.DepthFirstSol.numIterations += 1
         return False
 
     def planDijkstra(self, update=False, ax=None):
@@ -161,6 +161,7 @@ class GraphSearchPlanner:
                         ax.plot([curNode.id[0], edge[0]], [curNode.id[1], edge[1]], '.-', markersize=2, color='xkcd:grey', linewidth=1)
                         plt.pause(0.01)
         
+            self.DijkstraSol.numIterations += 1
         return False
 
     def planRandom(self):
