@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 import numpy as np
-from queue import Queue as q
 
 class Node:
     # A Node object has three important parts:
@@ -16,6 +15,7 @@ class Node:
         self.id = id
         self.edges = {}
         self.state = self.states[0]
+        self.cost = 0
 
     def addEdge(self, nextNode, weight = 1):
         if isinstance(nextNode, Node):

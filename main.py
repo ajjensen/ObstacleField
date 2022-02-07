@@ -15,7 +15,13 @@ planner = GraphSearchPlanner(map)
 # Plot graph and obstacle field
 fig, ax = plt.subplots()
 planner.obsFieldObj.showField(ax)
-planner.planBreadthFirst(True, ax)
+# planner.planBreadthFirst(True, ax)
+# planner.planDepthFirst(True, ax)
+planner.planDijkstra(True, ax)
 # planner.graphObj.plotGraph(ax)
 
 plt.show()
+
+# TODO:
+#   - generate plots
+#   - compile data
