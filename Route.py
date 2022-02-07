@@ -4,4 +4,9 @@ class Route:
 
     def __init__(self):
         self.numIterations = 0
-        self.path = [None]
+        self.path = {}
+
+    def incrementIterations(self):
+        self.numIterations += 1
+
+    

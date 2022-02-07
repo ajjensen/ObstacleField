@@ -7,13 +7,15 @@ import matplotlib.pyplot as plt
 from matplotlib import colors
 
 size = [20, 20]
-density = 0.2
+density = 0.3
 
 map = ObstacleField(size, density)
 planner = GraphSearchPlanner(map)
 
 # Plot graph and obstacle field
 fig, ax = plt.subplots()
-planner.obsField.showField(ax)
-planner.graph.plotGraph(ax)
+planner.obsFieldObj.showField(ax)
+planner.planBreadthFirst(True, ax)
+# planner.graphObj.plotGraph(ax)
+
 plt.show()
